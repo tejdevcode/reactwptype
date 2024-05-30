@@ -1,0 +1,9 @@
+@import './assets/css/animate.min.css';
+@import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+
+:root {
+  --primary: #88B44E;
+  --secondary: #FB9F38;
+  --light: #F5F8F2;
+  --dark: #252C30;
+}
