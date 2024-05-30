@@ -1,5 +1,5 @@
 import { Suspense, lazy } from 'react'
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom'
 import './App.css'
 import HomePage from './pages/Homepage'
 
@@ -10,11 +10,10 @@ function App() {
   return (
     <>
 
-      <Router>
-        <Routes>
-          <Route path='/' element={<HomePage />} />
-        </Routes>
-      </Router>
+
+      <Routes>
+        <Route path='/' element={<HomePage />} />
+      </Routes>
 
       <h1>Vite + React</h1>
 
