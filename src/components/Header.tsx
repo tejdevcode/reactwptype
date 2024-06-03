@@ -16,9 +16,9 @@ const Header = () => {
          <div className="collapse navbar-collapse" id="navbarCollapse">
             <div className="navbar-nav ms-auto p-4 p-lg-0">
                <Link to="/" className="nav-item nav-link active">Home</Link>
-               <Link to="about.html" className="nav-item nav-link">About</Link>
-               <Link to="service.html" className="nav-item nav-link">Services</Link>
-               <Link to="project.html" className="nav-item nav-link">Projects</Link>
+               <Link to="/about" className="nav-item nav-link">About</Link>
+               <Link to="/Services" className="nav-item nav-link">Services</Link>
+               <Link to="/projects" className="nav-item nav-link">Projects</Link>
                <div className="nav-item dropdown">
                   <a href="#" className="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages <FaAngleDown className="ms-2" /></a>
                   <div className="dropdown-menu bg-light m-0">
@@ -29,7 +29,7 @@ const Header = () => {
                      <a href="404.html" className="dropdown-item">404 Page</a>
                   </div>
                </div>
-               <a href="contact.html" className="nav-item nav-link">Contact</a>
+               <Link to="/contact" className="nav-item nav-link">Contact</Link>
             </div>
             <a href="" className="btn btn-primary py-4 px-lg-4 rounded-0 d-none d-lg-block">Get A Quote
                <FaArrowRight className="ms-3" /></a>
