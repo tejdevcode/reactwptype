@@ -11,6 +11,11 @@ import Aboutpage from './pages/Aboutpage';
 import Servicespage from './pages/Servicespage';
 import Projectspage from './pages/Projectspage';
 import Contactpage from './pages/Contactpage';
+import Nopage404 from './pages/404';
+import Featurepage from './pages/Featurepage';
+import Quotepage from './pages/Quotepage';
+import Teampage from './pages/Teampage';
+import Testimonialpage from './pages/Testimonialpage';
 
 // Works also with SSR as expected
 // const Card = lazy(() => import('./Card'))
@@ -28,12 +33,26 @@ function App() {
       <Header />
       <Routes>
         <Route path='/' element={<HomePage />} />
+        <Route path='*' element={< Nopage404 />} />
         <Route path='/about' element={<Aboutpage />} />
-        <Route path='/Services' element={<Servicespage />} />
+        <Route path='/services' element={<Servicespage />} />
         <Route path='/projects' element={<Projectspage />} />
+        <Route path="/page/features" element={<Featurepage />} />
+        <Route path="/page/quote" element={<Quotepage />} />
+        <Route path="/page/team" element={<Teampage />} />
+        <Route path="/page/testimonial" element={<Testimonialpage />} />
+
         <Route path='/contact' element={<Contactpage />} />
       </Routes>
       <Footer />
+
+
+
+
+
+
+
+
 
       {/* <Suspense fallback={<p>Loading card component...</p>}>
         <Card />

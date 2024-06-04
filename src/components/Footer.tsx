@@ -8,6 +8,7 @@ import { FaLocationDot } from "react-icons/fa6";
 import { FaEnvelope } from "react-icons/fa";
 import { useEffect } from "react";
 import { BsArrowUp } from "react-icons/bs";
+import { Link } from 'react-router-dom'
 
 const Footer = () => {
    useEffect(() => {
@@ -61,11 +62,11 @@ const Footer = () => {
                   </div>
                   <div className="col-lg-3 col-md-6">
                      <h4 className="text-white mb-4">Quick Links</h4>
-                     <a className="btn btn-link" href=""> <FaChevronRight className="me-1 mb-1" /> About Us</a>
-                     <a className="btn btn-link" href=""> <FaChevronRight className="me-1 mb-1" /> Contact Us</a>
-                     <a className="btn btn-link" href=""> <FaChevronRight className="me-1 mb-1" /> Our Services</a>
-                     <a className="btn btn-link" href=""> <FaChevronRight className="me-1 mb-1" /> Terms & Condition</a>
-                     <a className="btn btn-link" href=""> <FaChevronRight className="me-1 mb-1" /> Support</a>
+                     <Link className="btn btn-link" to="/about"> <FaChevronRight className="me-1 mb-1" /> About Us</Link>
+                     <Link className="btn btn-link" to="/contact"> <FaChevronRight className="me-1 mb-1" /> Contact Us</Link>
+                     <Link className="btn btn-link" to="/services"> <FaChevronRight className="me-1 mb-1" /> Our Services</Link>
+                     <Link className="btn btn-link" to="/"> <FaChevronRight className="me-1 mb-1" /> Terms & Condition</Link>
+                     <Link className="btn btn-link" to="/"> <FaChevronRight className="me-1 mb-1" /> Support</Link>
                   </div>
                   <div className="col-lg-3 col-md-6">
                      <h4 className="text-white mb-4">Newsletter</h4>
@@ -83,6 +84,9 @@ const Footer = () => {
                <div className="row">
                   <div className="col-md-6 text-center text-md-start mb-3 mb-md-0">
                      &copy;2015 - <span id="footeryear"> {' '}</span> <a className="border-bottom" href="#">React Typescrept WordpressHeadless</a>, All Right Reserved.
+                  </div>
+                  <div className="col-md-6 text-center text-md-end">
+                     React By <Link className="border-bottom" to="/">Tej R</Link>
                   </div>
                </div>
             </div>

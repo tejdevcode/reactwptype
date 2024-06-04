@@ -236,6 +236,11 @@ h6,
   background: rgba(15, 66, 41, .6);
 }
 
+.facts.nobg,
+.quote.nobg {
+  background-color: transparent;
+}
+
 .counterbg {
   z-index: 1;
 }

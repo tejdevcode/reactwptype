@@ -1,40 +1,48 @@
 
 import { FaArrowRight } from "react-icons/fa6";
 import { FaAngleDown } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
-
+interface NavLinkProps {
+   isActive: boolean;
+   isPending: boolean;
+}
 const Header = () => {
    return (
       <nav className="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0">
-         <a href="index.html" className="navbar-brand d-flex align-items-center px-4 px-lg-5">
+         <Link to="/" className="navbar-brand d-flex align-items-center px-4 px-lg-5">
             <h1 className="m-0">Gardener</h1>
-         </a>
+         </Link>
          <button type="button" className="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
             <span className="navbar-toggler-icon"></span>
          </button>
          <div className="collapse navbar-collapse" id="navbarCollapse">
             <div className="navbar-nav ms-auto p-4 p-lg-0">
-               <Link to="/" className="nav-item nav-link active">Home</Link>
-               <Link to="/about" className="nav-item nav-link">About</Link>
-               <Link to="/Services" className="nav-item nav-link">Services</Link>
-               <Link to="/projects" className="nav-item nav-link">Projects</Link>
+               <NavLink to="/"
+                  className={({ isActive }: NavLinkProps) => isActive ? "nav-item nav-link active" : "nav-item nav-link"}
+               >Home</NavLink>
+               <NavLink to="/about" className={({ isActive }: NavLinkProps) => isActive ? "nav-item nav-link active" : "nav-item nav-link "}>About</NavLink>
+               <NavLink to="/services" className={({ isActive }: NavLinkProps) => isActive ? "nav-item nav-link active" : "nav-item nav-link "}>Services</NavLink>
+               <NavLink to="/projects" className={({ isActive }: NavLinkProps) => isActive ? "nav-item nav-link active" : "nav-item nav-link "}>Projects</NavLink>
                <div className="nav-item dropdown">
-                  <a href="#" className="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages <FaAngleDown className="ms-2" /></a>
+                  <NavLink to="/" className="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages
+                     <FaAngleDown className="ms-2" />
+                  </NavLink>
                   <div className="dropdown-menu bg-light m-0">
-                     <a href="feature.html" className="dropdown-item">Features</a>
-                     <a href="quote.html" className="dropdown-item">Free Quote</a>
-                     <a href="team.html" className="dropdown-item">Our Team</a>
-                     <a href="testimonial.html" className="dropdown-item">Testimonial</a>
-                     <a href="404.html" className="dropdown-item">404 Page</a>
+                     <NavLink to="/page/features" className={({ isActive }: NavLinkProps) => isActive ? "dropdown-item active" : "dropdown-item "}>Features</NavLink>
+                     <NavLink to="/page/quote" className="dropdown-item">Free Quote</NavLink>
+                     <NavLink to="/page/team" className="dropdown-item">Our Team</NavLink>
+                     <NavLink to="/page/testimonial" className="dropdown-item">Testimonial</NavLink>
+                     <NavLink to="/nopage" className="dropdown-item">404 Page</NavLink>
                   </div>
                </div>
-               <Link to="/contact" className="nav-item nav-link">Contact</Link>
+               <NavLink to="/contact" className={({ isActive }: NavLinkProps) => isActive ? "nav-item nav-link active" : "nav-item nav-link "}>Contact</NavLink>
             </div>
-            <a href="" className="btn btn-primary py-4 px-lg-4 rounded-0 d-none d-lg-block">Get A Quote
-               <FaArrowRight className="ms-3" /></a>
+            <Link to="/page/quote" className="btn btn-primary py-4 px-lg-4 rounded-0 d-none d-lg-block">Get A Quote
+               <FaArrowRight className="ms-3" /></Link>
          </div>
-      </nav>
+      </nav >
    )
 }
 
