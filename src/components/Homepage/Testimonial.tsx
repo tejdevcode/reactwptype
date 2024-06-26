@@ -1,4 +1,5 @@
-import Slider from "react-slick";
+/* import Slider from "react-slick"; */
+import Slider from "@ant-design/react-slick";
 import "../../assets/css/slick.min.css";
 import "../../assets/css/slick-theme.css";
 import LazyLoadComponent from './LazyLoadComponent';

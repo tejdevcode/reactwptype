@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import LazyLoadComponent from './LazyLoadComponent';
 import CountUp from 'react-countup';
 
@@ -5,6 +6,10 @@ import CountUp from 'react-countup';
 
 
 const Counter = () => {
+   const [window, setWindow] = useState<number>(0);
+   useEffect(() => {
+      setWindow(1);
+   }, []);
    return (
       <div className="container-fluid facts my-5 py-5 position-relative" >
          {/* data-parallax="scroll" data-image-src="../../src/assets/img/carousel-1.jpg" */}
@@ -14,7 +19,7 @@ const Counter = () => {
          {/* {secload && <Parallax blur={10} bgImage="../../src/assets/img/carousel-1.jpg" bgImageAlt="the cat" strength={200}>
             Content goes here. Parallax height grows with content height.
          </Parallax>} */}
-         <div className="container py-5">
+         {window && <div className="container py-5 counterbox">
             <div className="row g-5">
                <div className="col-sm-6 col-lg-3 text-center wow fadeIn" data-wow-delay="0.1s">
                   <LazyLoadComponent>
@@ -41,7 +46,7 @@ const Counter = () => {
                   <span className="fs-5 fw-semi-bold text-light">Awards Achieved</span>
                </div>
             </div>
-         </div>
+         </div>}
       </div >
    )
 }

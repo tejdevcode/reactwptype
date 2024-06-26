@@ -86,7 +86,6 @@ app.use('*', async (req, res) => {
       }
     })
 
-
     setTimeout(() => {
       abort()
     }, ABORT_DELAY)
