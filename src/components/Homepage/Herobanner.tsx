@@ -1,7 +1,7 @@
 // import { gql, useQuery } from '@apollo/client';
 import Carousel from 'react-bootstrap/Carousel';
 // import axios from 'axios';
-import { Suspense, useEffect, useLayoutEffect, useState } from 'react';
+import { Suspense } from 'react';
 import Loader from '../Loader';
 import { ErrorBoundary } from "react-error-boundary";
 

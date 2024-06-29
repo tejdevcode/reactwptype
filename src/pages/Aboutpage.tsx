@@ -8,7 +8,7 @@ const Aboutpage = () => {
       <>
          <Pagebanner title="About Us" shorttitle={"About"} />
          <Aboutsec />
-         <Counter />
+         {/* <Counter /> */}
          <Team />
       </>
    )

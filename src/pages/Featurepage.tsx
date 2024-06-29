@@ -8,7 +8,7 @@ const Featurepage = () => {
       <>
          <Pagebanner title="Features" shorttitle={"Features"} />
          <Bannercards />
-         <Counter />
+         {/* <Counter /> */}
          <Features />
       </>
    )

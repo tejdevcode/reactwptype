@@ -15,7 +15,7 @@ import { useState } from "react"
 import Loader from '../components/Loader';
 import fetchData from "../api/fetchData";
 
-const resource: any = fetchData(`${process.env.QL_query}=query home { page(id: "home", idType: URI) { id slug slider { slideritem { itemtitle itemlink { url title } itemimage { node { sourceUrl altText uri } } } } bnrcards { carditem { cardTitle cardText cardDelay } } } }`);
+const resource: any = fetchData(`${process.env.QL_query}=query home { page(id: "home", idType: URI) { id slug slider { slideritem { itemtitle itemlink { url title } itemimage { node { sourceUrl altText uri } } } } } }`);
 
 
 const HomePage = () => {
@@ -29,24 +29,22 @@ const HomePage = () => {
       setLoading(true);
    }
    pagedata();
-   console.log(homedata)
+   //console.log(homedata?.bnrcards)
 
    return (
       <>
-         {loading ?
-            <>
-               <Herobanner bannerdata={homedata?.slider} />
-               <Bannercards cardata={homedata?.bnrcards} />
-               <Aboutsec />
-               <Counter />
-               <Features />
-               <Services />
-               <Quote />
-               <Ourprojects />
-               <Team />
-               <Testimonial />
-            </>
-            : <Loader />}
+         <>
+            {loading ? <Herobanner bannerdata={homedata?.slider} /> : <Loader />}
+            <Bannercards />
+            <Aboutsec />
+            {/* <Counter /> */}
+            <Features />
+            <Services />
+            <Quote />
+            <Ourprojects />
+            <Team />
+            <Testimonial />
+         </>
       </>
    )
 }

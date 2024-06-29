@@ -25,21 +25,19 @@ const Header = () => {
                <NavLink to="/about" className={({ isActive }: NavLinkProps) => isActive ? "nav-item nav-link active" : "nav-item nav-link "}>About</NavLink>
                <NavLink to="/services" className={({ isActive }: NavLinkProps) => isActive ? "nav-item nav-link active" : "nav-item nav-link "}>Services</NavLink>
                <NavLink to="/projects" className={({ isActive }: NavLinkProps) => isActive ? "nav-item nav-link active" : "nav-item nav-link "}>Projects</NavLink>
-               <div className="nav-item dropdown">
+               {/* <div className="nav-item dropdown">
                   <NavLink to="/" className="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages
                      <FaAngleDown className="ms-2" />
                   </NavLink>
                   <div className="dropdown-menu bg-light m-0">
                      <NavLink to="/page/features" className={({ isActive }: NavLinkProps) => isActive ? "dropdown-item active" : "dropdown-item "}>Features</NavLink>
-                     <NavLink to="/page/quote" className="dropdown-item">Free Quote</NavLink>
                      <NavLink to="/page/team" className="dropdown-item">Our Team</NavLink>
-                     <NavLink to="/page/testimonial" className="dropdown-item">Testimonial</NavLink>
-                     <NavLink to="/nopage" className="dropdown-item">404 Page</NavLink>
                   </div>
-               </div>
+               </div> */}
+               <NavLink to="/features" className={({ isActive }: NavLinkProps) => isActive ? "nav-item nav-link active" : "nav-item nav-link "}>Features</NavLink>
                <NavLink to="/contact" className={({ isActive }: NavLinkProps) => isActive ? "nav-item nav-link active" : "nav-item nav-link "}>Contact</NavLink>
             </div>
-            <Link to="/page/quote" className="btn btn-primary py-4 px-lg-4 rounded-0 d-none d-lg-block">Get A Quote
+            <Link to="/quote" className="btn btn-primary py-4 px-lg-4 rounded-0 d-none d-lg-block">Get A Quote
                <FaArrowRight className="ms-3" /></Link>
          </div>
       </nav >

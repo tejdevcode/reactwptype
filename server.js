@@ -36,7 +36,7 @@ if (!isProduction) {
 // Serve HTML
 app.use('*', async (req, res) => {
   try {
-    const url = req.originalUrl.replace(base, '')
+    const url = req.originalUrl.replace(base, '/')
 
     let template
     let render
@@ -69,7 +69,6 @@ app.use('*', async (req, res) => {
             callback()
           }
         })
-
         const [htmlStart, htmlEnd] = template.split(`<!--app-html-->`)
 
         res.write(htmlStart)
