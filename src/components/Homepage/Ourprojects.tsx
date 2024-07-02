@@ -50,7 +50,7 @@ const Ourprojects = () => {
       setLoading(true);
    }
    pagedata();
-   console.log(projectsdata)
+   //console.log(projectsdata)
    useEffect(() => {
       const $ = window.jQuery;
       //setTimeout(() => {},1000)

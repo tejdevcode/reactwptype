@@ -41,11 +41,11 @@ const Team = () => {
 
    async function pagedata() {
       const compdata = await resource;
-      setTeamdata(compdata.data.page?.team);
+      setTeamdata(compdata?.data?.page?.team);
       setLoading(true);
    }
    pagedata();
-
+   //console.log(teamdata)
 
    return (
       <div className="container-xxl py-5">
