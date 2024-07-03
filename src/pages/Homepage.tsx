@@ -15,7 +15,7 @@ import { useState } from "react"
 import Loader from '../components/Loader';
 import fetchData from "../api/fetchData";
 
-const resource: any = fetchData(`${process.env.QL_query}=query home { page(id: "home", idType: URI) { id slug slider { slideritem { itemtitle itemlink { url title } itemimage { node { sourceUrl altText uri } } } } } }`);
+const resource: any = fetchData(`${process.env.QL_query}=query home { page(id: "home", idType: URI) { id slug slider { slideritem { itemtitle itemlink { url title } itemimage { node { sourceUrl altText uri } } } } testimonial{ tsubtitle title tdisc moreLink{ title url target } testimonialItem{ personimg{ node{ sourceUrl altText } } personText personName personProfessation } } } }`);
 
 
 const HomePage = () => {
@@ -43,7 +43,7 @@ const HomePage = () => {
             <Quote />
             <Ourprojects />
             <Team />
-            <Testimonial />
+            <Testimonial testidata={homedata?.testimonial} />
          </>
       </>
    )

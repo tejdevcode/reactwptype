@@ -58,9 +58,9 @@ const Aboutsec: React.FC = () => {
                <div className="col-lg-6 col-md-7 wow fadeInUp" data-wow-delay={`0.${aboutdata?.timeDelay[1].timeDelaySecond}s`}>
                   <h1 className="display-1 text-primary mb-0">{aboutdata?.experiance}</h1>
                   <p className="text-primary mb-4">Year of Experience</p>
-                  <h1 className="display-5 mb-4">{aboutdata?.aboutTitle}</h1>
+                  <h1 className="display-5 mb-4">{aboutdata?.aboutTitle ?? "We Make Your Home Like A Garden"}</h1>
                   <p className="mb-4">{aboutdata?.aboutText}</p>
-                  <a className="btn btn-primary py-3 px-4" href={aboutdata?.aboutLink?.url}>{aboutdata?.aboutLink?.title}</a>
+                  <a className="btn btn-primary py-3 px-4" href={aboutdata?.aboutLink?.url}>{aboutdata?.aboutLink?.title ?? "Explore More"}</a>
                </div>
                <div className="col-lg-3 col-md-12 wow fadeInUp" data-wow-delay={`0.${aboutdata?.timeDelay[2].timeDelaySecond}s`}>
                   <div className="row g-5">

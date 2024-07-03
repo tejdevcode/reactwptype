@@ -7,8 +7,35 @@ import { BsChevronLeft } from "react-icons/bs";
 import { BsChevronRight } from "react-icons/bs";
 import { useRef } from "react"
 
+interface Testidataprop {
+   testidata?: {
+      "tsubtitle"?: string | undefined,
+      "title"?: string | undefined,
+      "tdisc"?: string | undefined,
+      "moreLink"?: {
+         "title"?: string | undefined,
+         "url"?: string | undefined,
+         "target"?: string | undefined,
+      }
+      "testimonialItem"?: [
+         {
+            "personimg"?: {
+               "node"?: {
+                  "sourceUrl"?: string | undefined,
+                  "altText"?: string | undefined,
+               }
+            },
+            "personText"?: string | undefined,
+            "personName"?: string | undefined,
+            "personProfessation"?: string | undefined,
+         }
+      ]
+   }
+}
 
-const Testimonial = () => {
+
+const Testimonial: React.FC<Testidataprop> = ({ testidata }) => {
+   /* console.log(testidata) */
    let sliderRef = useRef<Slider>(null);
    const next = () => {
       sliderRef.current ? sliderRef.current.slickNext() : null;
@@ -31,27 +58,24 @@ const Testimonial = () => {
          <div className="container">
             <div className="row g-5">
                <div className="col-lg-5 wow fadeInUp" data-wow-delay="0.1s">
-                  <p className="fs-5 fw-bold text-primary">Testimonial</p>
-                  <h1 className="display-5 mb-5">What Our Clients Say About Us!</h1>
-                  <p className="mb-4">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit sed stet lorem sit clita duo justo.</p>
-                  <a className="btn btn-primary py-3 px-4" href="">See More</a>
+                  <p className="fs-5 fw-bold text-primary">{testidata?.tsubtitle ?? "Testimonial"}</p>
+                  <h1 className="display-5 mb-5">{testidata?.title ?? "What Our Clients Say About Us!"}</h1>
+                  <p className="mb-4">{testidata?.tdisc}</p>
+                  <a className="btn btn-primary py-3 px-4" href={testidata?.moreLink?.url}>{testidata?.moreLink?.title ?? "See More"}</a>
                </div>
                <div className="col-lg-7 wow fadeInUp" data-wow-delay="0.5s">
                   <LazyLoadComponent>
                      <div className="testimonial-carousel">
                         <Slider {...settings} ref={sliderRef}>
-                           <div className="testimonial-item">
-                              <img className="img-fluid rounded mb-3" src="../../src/assets/img/testimonial-1.jpg" alt="" />
-                              <p className="fs-5">Dolores sed duo clita tempor justo dolor et stet lorem kasd labore dolore lorem ipsum. At lorem lorem magna ut et, nonumy et labore et tempor diam tempor erat.</p>
-                              <h4>Client Name</h4>
-                              <span>Profession</span>
-                           </div>
-                           <div className="testimonial-item">
-                              <img className="img-fluid rounded mb-3" src="../../src/assets/img/testimonial-2.jpg" alt="" />
-                              <p className="fs-5">Dolores sed duo clita tempor justo dolor et stet lorem kasd labore dolore lorem ipsum. At lorem lorem magna ut et, nonumy et labore et tempor diam tempor erat.</p>
-                              <h4>Client Name</h4>
-                              <span>Profession</span>
-                           </div>
+                           {testidata?.testimonialItem?.map((item, i) =>
+                              <div className="testimonial-item" key={i}>
+                                 <img className="img-fluid rounded mb-3" src={item?.personimg?.node?.sourceUrl} alt={item?.personimg?.node?.altText} />
+                                 <p className="fs-5">{item?.personText}</p>
+                                 <h4>{item?.personName}</h4>
+                                 <span>{item?.personProfessation}</span>
+                              </div>
+                           )}
+
                         </Slider>
                         <div className="owl-nav">
                            <button className="owl-prev" onClick={previous}><BsChevronLeft style={{ width: 22, height: 22 }} /></button>

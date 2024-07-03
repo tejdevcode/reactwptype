@@ -14,8 +14,6 @@ import Contactpage from './pages/Contactpage';
 import Nopage404 from './pages/404';
 import Featurepage from './pages/Featurepage';
 import Quotepage from './pages/Quotepage';
-import Teampage from './pages/Teampage';
-import Testimonialpage from './pages/Testimonialpage';
 
 // Works also with SSR as expected
 // const Card = lazy(() => import('./Card'))

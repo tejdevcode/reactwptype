@@ -7,6 +7,14 @@ import fetchData from "../../api/fetchData";
 
 const resource: any = fetchData(`${process.env.QL_query}=query features { page(id: "features", idType: URI) { id slug featuresec{ featuresecSubtitle featuresecTitle featuresecText featuresecLink{ title url target } featuresecIconstxt{ icontext } } } }`);
 
+/* const resourcetest: any = fetchData(`https://reactwp.byethost14.com/graphql?query=query features { page(id: "features", idType: URI) { id slug featuresec{ featuresecSubtitle featuresecTitle featuresecText featuresecLink{ title url target } featuresecIconstxt{ icontext } } } }`);
+const compdatatest = await resourcetest;
+console.log(compdatatest) */
+
+/* const resourcepn: any = fetchData(`https://dev-reactwptype.pantheonsite.io/graphql?query=query Pages { pages { edges { node{ id slug } } } }`);
+const compdatapn = await resourcepn;
+console.log(compdatapn) */
+
 interface Feature {
    "featuresecSubtitle"?: string | undefined,
    "featuresecTitle"?: string | undefined,
@@ -31,6 +39,10 @@ const Features = () => {
       const compdata = await resource;
       setFeaturedata(compdata.data.page?.featuresec);
       setLoading(true);
+      /* const compdatatest = await resourcetest;
+      console.log(compdatatest) */
+      /* const compdatapn = await resourcepn;
+      console.log(compdatapn) */
    }
    pagedata();
    //console.log(featuredata)

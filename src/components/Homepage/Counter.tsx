@@ -56,10 +56,10 @@ const Counter = () => {
             <div className="row g-5">
                {countdata?.counterup?.map((item, i) =>
                   <div className="col-sm-6 col-lg-3 text-center wow fadeIn" key={i}>
-                     <LazyLoadComponent>
-                        <CountUp end={item.countnum} className="display-4 text-white" />
-                     </LazyLoadComponent>
-                     <span className="fs-5 fw-semi-bold text-light">{item.counttext}</span>
+                     {/* <LazyLoadComponent>
+                     </LazyLoadComponent> */}
+                     <CountUp end={item.countnum} className="display-4 text-white" />
+                     <div className="fs-5 fw-semi-bold text-light">{item.counttext}</div>
                   </div>
                )}
 
