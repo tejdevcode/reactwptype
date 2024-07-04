@@ -1,6 +1,6 @@
 import { FaEye } from "react-icons/fa";
 import { FaLink } from "react-icons/fa";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
 import { useState } from "react"
 import fetchData from "../../api/fetchData";
@@ -43,6 +43,7 @@ const Ourprojects = () => {
    const duration = ['0.1s', '0.3s', '0.5s', '0.1s', '0.3s', '0.5s']
    const [projectsdata, setProjectsdata] = useState<Projects>();
    const [loading, setLoading] = useState<boolean>(false);
+   const isotope = useRef();
 
    async function pagedata() {
       const compdata = await resource;
@@ -79,7 +80,8 @@ const Ourprojects = () => {
                <div className="col-12 text-center">
                   <ul className="list-inline rounded mb-5" id="portfolio-flters">
                      {projectsdata?.projects?.projectsTabTitles?.map((item, i) =>
-                        <li className={'mx-2 ' + (i === 0 ? 'active' : '')} data-filter={projectfilter[i]} key={i}>{item?.projectCat}</li>
+                        <li className={'mx-2 ' + (i === 0 ? 'active' : '')} data-filter={projectfilter[i]} key={i}>
+                           {item?.projectCat ?? '*'}</li>
                      )}
                   </ul>
                </div>
@@ -98,7 +100,17 @@ const Ourprojects = () => {
                         </div>
                      </div>
                   </div>
-               )}
+               ) ?? <div className={"col-lg-4 col-md-6 portfolio-item wow fadeInUp"}>
+                     <div className="portfolio-inner rounded">
+                        <div className="portfolio-text">
+                           <h4 className="text-white mb-4"></h4>
+                           <div className="d-flex">
+                              <a className="btn btn-lg-square rounded-circle mx-2" href="#" data-lightbox="portfolio"><FaEye style={{ width: 18, height: 16 }} /></a>
+                              <a className="btn btn-lg-square rounded-circle mx-2" href={'#'}><FaLink style={{ width: 16, height: 16 }} /></a>
+                           </div>
+                        </div>
+                     </div>
+                  </div>}
             </div>
          </div>
       </div>

@@ -38,7 +38,7 @@ const HomePage = () => {
             {loading ? <Herobanner bannerdata={homedata?.slider} /> : <Loader />}
             <Bannercards />
             <Aboutsec />
-            {/* <Counter /> */}
+            <Counter />
             <Features />
             <Services />
             <Quote />
