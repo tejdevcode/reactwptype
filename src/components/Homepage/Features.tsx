@@ -43,6 +43,7 @@ const Features = () => {
       console.log(compdatatest) */
       /* const compdatapn = await resourcepn;
       console.log(compdatapn) */
+
    }
    pagedata();
    //console.log(featuredata)
