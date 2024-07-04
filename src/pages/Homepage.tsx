@@ -29,6 +29,7 @@ const HomePage = () => {
       setLoading(true);
    }
    pagedata();
+
    //console.log(homedata?.bnrcards)
 
    return (
