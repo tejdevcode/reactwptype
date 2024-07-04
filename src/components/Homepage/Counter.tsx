@@ -37,10 +37,10 @@ const Counter = () => {
       setCountdata(compdata.data.page?.counter);
       setLoading(true);
    }
-   pagedata();
    //console.log(countdata)
 
    useEffect(() => {
+      pagedata();
       setWindow(1);
    }, []);
    return (
