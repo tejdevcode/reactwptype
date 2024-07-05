@@ -50,14 +50,15 @@ const Ourprojects = () => {
    const [projectsdata, setProjectsdata] = useState<Projects>();
    const [loading, setLoading] = useState<boolean>(false);
    const [selectedCategory, setSelectedCategory] = useState<number>(0);
-   const tabingdata = projectsdata?.projects?.projectCard;
-   const [tabdata, setTabdata] = useState(tabingdata);
+   const [tabdata, setTabdata] = useState('*');
+   let tabingdata: ProjectCard[] | undefined = tabdata === '*' ? projectsdata?.projects?.projectCard : projectsdata?.projects?.projectCard?.filter((item) => item.projectStatus && item.projectStatus[0] === tabdata);
    //console.log(selectedCategory)
 
-   const cathandelr = (i: any): any => {
+   const cathandelr = (i: number): void => {
       //if (i !== selectedCategory) { setSelectedCategory(i) };
-      console.log(projectfilter[i], projectsdata?.projects?.projectCard?.filter((item) => projectfilter[i]))
+      setTabdata(projectfilter[i]);
    };
+   //console.log(tabdata)
    /* const filteredTabs = () => {
       const filteredProjects = projectsdata?.projects?.projectCard?.filter(tab => {
          tab.projectStatus && tab.projectStatus.length > 0 &&
@@ -70,25 +71,25 @@ const Ourprojects = () => {
       setProjectsdata(compdata.data.page);
       setLoading(true);
    }
-   pagedata();
    //console.log(projectsdata)
    /* useEffect(() => {filteredTabs()}, [selectedCategory]); */
 
    useEffect(() => {
-      /* const $ = window.jQuery; */
+      pagedata();
+      const $ = window.jQuery;
 
       setTimeout(() => {
          if (loading) {
             /* var portfolioIsotope = $('.portfolio-container').isotope({
                itemSelector: '.portfolio-item',
                layoutMode: 'fitRows'
-            });
+            });*/
             $('#portfolio-flters li').on('click', function (this: any) {
                $("#portfolio-flters li").removeClass('active');
                $(this).addClass('active');
-    
-               portfolioIsotope.isotope({ filter: $(this).data('filter') });
-            }); */
+
+               /* portfolioIsotope.isotope({ filter: $(this).data('filter') }); */
+            });
 
             /* if (window !== undefined) {
                var iso = new Isotope('.portfolio-container', {
@@ -120,13 +121,13 @@ const Ourprojects = () => {
                      {projectsdata?.projects?.projectsTabTitles?.map((item, i) =>
                         <li className={'mx-2 ' + (i === 0 ? 'active' : '')} data-filter={projectfilter[i]} key={i}
                            onClick={() => cathandelr(i)}>
-                           {item?.projectCat ?? '*'}</li>
+                           {item?.projectCat ?? 'All'}</li>
                      )}
                   </ul>
                </div>
             </div>
             <div className="row g-4 portfolio-container">
-               {tabdata?.map((item, i) =>
+               {tabingdata?.map((item, i) =>
                   <div className={"col-lg-4 col-md-6 portfolio-item wow fadeInUp " + item?.projectStatus?.[0]} data-wow-delay={duration[i]} key={i}>
                      <div className="portfolio-inner rounded">
                         <img className="img-fluid" src={item?.prcardImage?.node?.sourceUrl} alt={item?.prcardImage?.node?.altText} />
