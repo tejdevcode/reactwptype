@@ -17,9 +17,7 @@ export default defineConfig({
   css: {
     devSourcemap: true,
   },
-  build: {
-    commonjsOptions: {
-      transformMixedEsModules: true
-    }
-  }
+  optimizeDeps: {
+    include: ['jquery']
+  },
 })

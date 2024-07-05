@@ -42,7 +42,7 @@ const HomePage = () => {
             <Features />
             <Services />
             <Quote />
-            <Ourprojects />
+            {/* <Ourprojects /> */}
             <Team />
             <Testimonial testidata={homedata?.testimonial} />
          </>

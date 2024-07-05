@@ -1,6 +1,7 @@
 import { FaEye } from "react-icons/fa";
 import { FaLink } from "react-icons/fa";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, createRef, useCallback } from "react";
+//import Isotope from "isotope-layout"
 
 import { useState } from "react"
 import fetchData from "../../api/fetchData";
@@ -20,31 +21,48 @@ interface Projects {
       "projectsTabTitles"?: [{
          "projectCat"?: string | undefined,
       }],
-      "projectCard"?: [{
-         "prcardImage"?: {
-            "node": {
-               "sourceUrl"?: string,
-               "altText": string
-            }
-         }
-         "prcardTitle"?: string,
-         "projectStatus"?: [string],
-         "prcardLink"?: {
-            "title"?: string,
-            "url"?: string,
-            "target"?: string
-         }
-      }]
+      projectCard?: ProjectCard[] | undefined;
    }
 }
 
+interface ProjectCard {
+   prcardImage?: {
+      node: {
+         sourceUrl?: string;
+         altText: string;
+      };
+   };
+   prcardTitle?: string;
+   projectStatus?: string[] | undefined;
+   prcardLink?: {
+      title?: string;
+      url?: string;
+      target?: string;
+   };
+}
+
+
 const Ourprojects = () => {
-   const projectfilter = ['*', '.first', '.second']
+   const projectfilter = ['*', 'first', 'second']
    const duration = ['0.1s', '0.3s', '0.5s', '0.1s', '0.3s', '0.5s']
    const [projectsdata, setProjectsdata] = useState<Projects>();
    const [loading, setLoading] = useState<boolean>(false);
-   const isotope = useRef();
+   const [selectedCategory, setSelectedCategory] = useState<number>(0);
+   const tabingdata = projectsdata?.projects?.projectCard;
+   const [tabdata, setTabdata] = useState(tabingdata);
+   //console.log(selectedCategory)
 
+   const cathandelr = (i: any): any => {
+      //if (i !== selectedCategory) { setSelectedCategory(i) };
+      console.log(projectfilter[i], projectsdata?.projects?.projectCard?.filter((item) => projectfilter[i]))
+   };
+   /* const filteredTabs = () => {
+      const filteredProjects = projectsdata?.projects?.projectCard?.filter(tab => {
+         tab.projectStatus && tab.projectStatus.length > 0 &&
+         (selectedCategory === '*' || tab.projectStatus[0] === selectedCategory);
+      });
+      setTabdata(filteredProjects || []);
+   }; */
    async function pagedata() {
       const compdata = await resource;
       setProjectsdata(compdata.data.page);
@@ -52,20 +70,38 @@ const Ourprojects = () => {
    }
    pagedata();
    //console.log(projectsdata)
+   /* useEffect(() => {filteredTabs()}, [selectedCategory]); */
+
    useEffect(() => {
-      const $ = window.jQuery;
+      /* const $ = window.jQuery; */
+
       setTimeout(() => {
          if (loading) {
-            var portfolioIsotope = $('.portfolio-container').isotope({
+            /* var portfolioIsotope = $('.portfolio-container').isotope({
                itemSelector: '.portfolio-item',
                layoutMode: 'fitRows'
             });
             $('#portfolio-flters li').on('click', function (this: any) {
                $("#portfolio-flters li").removeClass('active');
                $(this).addClass('active');
-
+    
                portfolioIsotope.isotope({ filter: $(this).data('filter') });
-            });
+            }); */
+
+            /* if (window !== undefined) {
+               var iso = new Isotope('.portfolio-container', {
+                  itemSelector: '.portfolio-item',
+                  layoutMode: 'fitRows'
+               });
+    
+               var filtersElem: any = document.querySelector('#portfolio-flters');
+               filtersElem.addEventListener('click', function (event: any) {
+    
+                  var filterValue = event.target.getAttribute('data-filter');
+    
+                  iso.arrange({ filter: filterValue });
+               });
+            } */
          }
       }, 2000)
    }, [loading]);
@@ -80,14 +116,15 @@ const Ourprojects = () => {
                <div className="col-12 text-center">
                   <ul className="list-inline rounded mb-5" id="portfolio-flters">
                      {projectsdata?.projects?.projectsTabTitles?.map((item, i) =>
-                        <li className={'mx-2 ' + (i === 0 ? 'active' : '')} data-filter={projectfilter[i]} key={i}>
+                        <li className={'mx-2 ' + (i === 0 ? 'active' : '')} data-filter={projectfilter[i]} key={i}
+                           onClick={() => cathandelr(i)}>
                            {item?.projectCat ?? '*'}</li>
                      )}
                   </ul>
                </div>
             </div>
             <div className="row g-4 portfolio-container">
-               {projectsdata?.projects?.projectCard?.map((item, i) =>
+               {tabdata?.map((item, i) =>
                   <div className={"col-lg-4 col-md-6 portfolio-item wow fadeInUp " + item?.projectStatus?.[0]} data-wow-delay={duration[i]} key={i}>
                      <div className="portfolio-inner rounded">
                         <img className="img-fluid" src={item?.prcardImage?.node?.sourceUrl} alt={item?.prcardImage?.node?.altText} />
