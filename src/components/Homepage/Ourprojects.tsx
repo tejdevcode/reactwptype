@@ -42,6 +42,8 @@ interface ProjectCard {
 }
 
 
+
+
 const Ourprojects = () => {
    const projectfilter = ['*', 'first', 'second']
    const duration = ['0.1s', '0.3s', '0.5s', '0.1s', '0.3s', '0.5s']
