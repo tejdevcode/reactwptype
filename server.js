@@ -53,11 +53,11 @@ app.use('*', async (req, res) => {
     let didError = false
 
     const { pipe, abort } = render(url, ssrManifest, {
-      onShellError() {
+      onShellError(err) {
+        console.error(err);
         res.status(500)
         res.set({ 'Content-Type': 'text/html' })
         res.send('<h1>Something went wrong</h1>')
-        res.send(console.error(err));
       },
       onShellReady() {
         res.status(didError ? 500 : 200)
@@ -72,12 +72,12 @@ app.use('*', async (req, res) => {
         const [htmlStart, htmlEnd] = template.split(`<!--app-html-->`)
 
         res.write(htmlStart)
+        pipe(transformStream)
 
         transformStream.on('finish', () => {
           res.end(htmlEnd)
         })
 
-        pipe(transformStream)
       },
       onError(error) {
         didError = true
