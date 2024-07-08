@@ -1,4 +1,4 @@
-# React WP Type
+# React Wordpress TypeScript GraphQL
 
 ## Overview
 
