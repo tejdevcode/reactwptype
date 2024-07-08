@@ -10,10 +10,12 @@ import Ourprojects from "../components/Homepage/Ourprojects"
 import Team from "../components/Homepage/Team"
 import Testimonial from "../components/Homepage/Testimonial"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 
 import Loader from '../components/Loader';
 import fetchData from "../api/fetchData";
+//import wowtype form '../assets/type/wow';
+//import WOW from '../assets/js/WOW.js';
 
 const resource: any = fetchData(`${process.env.QL_query}=query home { page(id: "home", idType: URI) { id slug slider { slideritem { itemtitle itemlink { url title } itemimage { node { sourceUrl altText uri } } } } testimonial{ tsubtitle title tdisc moreLink{ title url target } testimonialItem{ personimg{ node{ sourceUrl altText } } personText personName personProfessation } } } }`);
 
@@ -29,6 +31,11 @@ const HomePage = () => {
       setLoading(true);
    }
    pagedata();
+
+   /* useEffect(() => {
+      const wow = new WOW();
+      wow.init();
+   }, []); */
 
    //console.log(homedata?.bnrcards)
 

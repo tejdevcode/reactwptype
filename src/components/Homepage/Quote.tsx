@@ -1,17 +1,42 @@
 
 
+import { useState } from "react"
+import fetchData from "../../api/fetchData";
+
+const resource: any = fetchData(`${process.env.QL_query}=query quote { page(id: "quote", idType: URI) { id slug quote{ secTitle secBgImage{ node{ sourceUrl altText } } } } }`);
+interface Quotes {
+   "secTitle"?: string | undefined,
+   "secBgImage": {
+      "node": {
+         "sourceUrl"?: string | undefined,
+         "altText"?: string | undefined
+      }
+   }
+}
+
 const Quote = () => {
+
+   const [quotedata, setQuotedata] = useState<Quotes>();
+   const [loading, setLoading] = useState<boolean>(false);
+
+   async function pagedata() {
+      const compdata = await resource;
+      setQuotedata(compdata.data.page.quote);
+      setLoading(true);
+   }
+   pagedata();
+   /* console.log(quotedata) */
    return (
       <div className="container-fluid quote my-5 py-5 position-relative">
          {/* data-parallax="scroll" data-image-src="../../src/assets/img/carousel-2.jpg" */}
          <div className="counterbg quote">
-            <div className="bgimg position-absolute" style={{ backgroundImage: `url(../../src/assets/img/carousel-2.jpg)` }}></div>
+            <div className="bgimg position-absolute" style={{ backgroundImage: `url(${quotedata?.secBgImage?.node?.sourceUrl})` }}></div>
          </div>
          <div className="container py-5">
             <div className="row justify-content-center">
                <div className="col-lg-7">
                   <div className="bg-white rounded p-4 p-sm-5 wow fadeIn" data-wow-delay="0.5s">
-                     <h1 className="display-5 text-center mb-5">Get A Free Quote</h1>
+                     <h1 className="display-5 text-center mb-5">{quotedata?.secTitle ?? "Get A Free Quote"}</h1>
                      <div className="row g-3">
                         <div className="col-sm-6">
                            <div className="form-floating">

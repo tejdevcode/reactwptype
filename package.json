@@ -23,7 +23,6 @@
     "express": "^4.19.2",
     "graphql": "^16.8.1",
     "graphql-request": "^7.0.1",
-    "http-proxy-middleware": "^3.0.0",
     "isotope-layout": "^3.0.6",
     "jquery": "^3.7.1",
     "node-fetch": "^3.3.2",
