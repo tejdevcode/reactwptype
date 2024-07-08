@@ -19,6 +19,7 @@ Before getting started, ensure you have Node.js and npm installed on your machin
   ```bash
   npm install
 
+
 ##  Scripts
 
 ##Development: Start the development server with hot reloading.
