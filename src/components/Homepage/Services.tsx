@@ -50,7 +50,7 @@ const Services = () => {
       setLoading(true);
    }
    pagedata();
-   console.log(servicedata)
+   //console.log(servicedata)
    return (
       <div className="container-xxl py-5">
          <div className="container">
