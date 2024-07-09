@@ -50,7 +50,7 @@ const Services = () => {
       setLoading(true);
    }
    pagedata();
-   //console.log(servicedata)
+   console.log(servicedata)
    return (
       <div className="container-xxl py-5">
          <div className="container">
@@ -63,7 +63,9 @@ const Services = () => {
                   <div className="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay={duration[i]} key={i}>
                      <div className="service-item rounded d-flex h-100">
                         <div className="service-img rounded">
-                           <img className="img-fluid" src="../../src/assets/img/service-1.jpg" alt="" />
+                           <img className="img-fluid" src={item?.srcardBackground
+                              ?.node?.sourceUrl} alt={item?.srcardBackground
+                                 ?.node?.altText} />
                         </div>
                         <div className="service-text rounded p-5">
                            <div className="btn-square rounded-circle mx-auto mb-3">
