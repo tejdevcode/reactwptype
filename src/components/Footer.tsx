@@ -9,6 +9,7 @@ import { FaEnvelope } from "react-icons/fa";
 import { useEffect } from "react";
 import { BsArrowUp } from "react-icons/bs";
 import { Link } from 'react-router-dom'
+import toast, { Toaster } from 'react-hot-toast';
 
 const Footer = () => {
    useEffect(() => {
@@ -91,6 +92,7 @@ const Footer = () => {
                </div>
             </div>
          </div>
+         <div><Toaster position="top-right" /></div>
          <a href="#" className="btn btn-lg btn-primary btn-lg-square rounded-circle back-to-top" onClick={handleClick}>
             <BsArrowUp />
          </a>

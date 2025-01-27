@@ -1,6 +1,8 @@
 import Pagebanner from "../components/Pagebanner"
 import { useState, FormEvent, useEffect } from "react"
 import { QuoteFormData, QuoteErrors } from "../utils/formtypes";
+import toast from 'react-hot-toast';
+
 
 const Quotepage = () => {
 
@@ -47,6 +49,7 @@ const Quotepage = () => {
       e.preventDefault();
       if (validateForm()) {
          console.log("Form submitted with data:", formData);
+         toast.success("Your message has been sent");
          // Reset form after successful submission
          setFormData({
             gname: "",

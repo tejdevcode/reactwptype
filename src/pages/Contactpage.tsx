@@ -1,6 +1,7 @@
 import Pagebanner from "../components/Pagebanner"
 import { useState, FormEvent } from "react";
 import { FormData, FormErrors } from "../utils/formtypes";
+import toast from 'react-hot-toast';
 
 const Contactpage = () => {
    const [formData, setFormData] = useState<FormData>({
@@ -41,6 +42,7 @@ const Contactpage = () => {
       e.preventDefault();
       if (validateForm()) {
          console.log("Form submitted with data:", formData);
+         toast.success("Your message has been sent");
          // Reset form after successful submission
          setFormData({
             name: "",
