@@ -67,7 +67,7 @@ const Services = () => {
                               ?.node?.sourceUrl} alt={item?.srcardBackground
                                  ?.node?.altText} />
                         </div>
-                        <div className="service-text rounded p-5">
+                        <div className="service-text rounded p-sm-5 p-3">
                            <div className="btn-square rounded-circle mx-auto mb-3">
                               <img className="img-fluid" src={item?.srcardicon?.node?.sourceUrl} alt={item?.srcardicon?.node?.altText ?? "service icon"} />
                            </div>

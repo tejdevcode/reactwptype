@@ -37,7 +37,7 @@ const Bannercards: React.FC = () => {
             <div className="row gx-0">
                {cardata?.carditem?.map((item, i) =>
                   <div className="col-lg-4 wow fadeIn" data-wow-delay={`0.${item.cardDelay}s`} key={i}>
-                     <div className="bg-white shadow d-flex align-items-center h-100 px-5" style={{ minHeight: 160 }}>
+                     <div className="bg-white shadow d-flex align-items-center h-100 px-sm-5 px-3" style={{ minHeight: 160 }}>
                         <div className="d-flex">
                            <div className="flex-shrink-0 btn-lg-square rounded-circle bg-light">
                               {icons[i]}
