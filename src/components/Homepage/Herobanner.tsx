@@ -142,7 +142,7 @@ const Herobanner: React.FC<SliderInfoData> = ({ bannerdata }) => {
                                  <div className="container">
                                     <div className="row justify-content-center">
                                        <div className="col-lg-8">
-                                          <h1 className="display-1 text-white mb-5 animated slideInDown">{item.itemtitle}</h1>
+                                          <h1 className="display-1 text-white mb-5 animated zoomIn">{item.itemtitle}</h1>
                                           {item.itemlink &&
                                              <a href={item.itemlink.url} className="btn btn-primary py-sm-3 px-sm-4">{item.itemlink.title}</a>}
                                        </div>

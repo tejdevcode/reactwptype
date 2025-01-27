@@ -553,6 +553,21 @@ h6,
   color: var(--primary);
 }
 
-#root{
+#root {
   width: 100%;
+}
+
+/* responsivee */
+@media screen and (max-width:991px) {
+  .navbar-collapse {
+    max-height: 100dvh;
+    transition: max-height 0.4s ease-in-out;
+    overflow: hidden;
+  }
+
+  .navbar-collapse.collapse:not(.show) {
+    display: block;
+    max-height: 0;
+    transition: max-height 0.4s ease-in-out;
+  }
 }
